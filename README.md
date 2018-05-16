@@ -1,7 +1,7 @@
 # JAVASCRIPT ATTRIBUTE NOTATION (JSAN)
 
 
-## Specification
+## Description
 
 **JSAN** aims to standardize the decomposition of a JSON object into the values that are contained in the object.
 The purpose of this structure is to simplify the inspection of the JSON values.
