@@ -22,6 +22,7 @@ public class Demo {
 
         // convert values back to a json string
         System.out.println("====JSAN TO JSON====");
-        System.out.println(JSANParser.parseToJson(keyValues));
+        String json = JSANParser.parseToJson(keyValues);
+        System.out.println(json);
     }
 }

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="org.tect.platform.jsan:jar">
+    <output-path>$PROJECT_DIR$/.idea/artifacts/org_tect_platform_jsan_jar</output-path>
+    <root id="archive" name="org.tect.platform.jsan.jar">
+      <element id="module-output" name="org.tect.platform.jsan" />
+    </root>
+  </artifact>
+</component>
