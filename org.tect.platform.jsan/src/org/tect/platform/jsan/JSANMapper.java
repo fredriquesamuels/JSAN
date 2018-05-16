@@ -13,6 +13,10 @@ public final class JSANMapper<AT extends JSANAttribute, KV extends JSANKeyValue>
         this(keyValueFactory, new JSANConverterContext());
     }
 
+    public JSANMapper() {
+        this(new DefaultJSANKeyValueFactory(), new JSANConverterContext());
+    }
+
     JSANMapper(JSANKeyValueFactory keyValueFactory, JSANConverterContext context) {
         this.keyValueFactory = keyValueFactory;
         this.context = context;
@@ -21,6 +25,11 @@ public final class JSANMapper<AT extends JSANAttribute, KV extends JSANKeyValue>
     public final List<KV> toKeyValues(JSANNode<AT> node) {
         List<AT> attributes = node.getAttributes();
         return createKeyValues(attributes, context);
+    }
+
+    public static List<JSANKeyValue> toKeyValues(String json) {
+        JSANNode node = JSANNode.fromJSON(json);
+        return new JSANMapper<>().toKeyValues(node);
     }
 
     public final JSANMapper<AT, KV> hideGroupIds() {

@@ -33,7 +33,7 @@ public class MappedParsedJSANNode implements ParsedJSANNode {
     }
 
     @Override
-    public long getGroupId() {
+    public long  getGroupId() {
         return -1;
     }
 
@@ -41,16 +41,16 @@ public class MappedParsedJSANNode implements ParsedJSANNode {
         return Collections.unmodifiableMap(objectGroup);
     }
 
-    public String toJson() {
+    public final String toJson() {
         return writeToString(objectGroup);
     }
 
-    private String writeToString(ObjectGroupImpl objectGroup) {
+    String writeToString(ObjectGroupImpl objectGroup) {
         ObjectMapper var1 = new ObjectMapper();
         try {
             return var1.writeValueAsString(objectGroup);
         } catch (JsonProcessingException var3) {
-            throw new JsonProcessingError(var3);
+            throw new JSONProcessingError(var3);
         }
     }
 

@@ -6,6 +6,7 @@ import org.tect.platform.jsan.token.JSANTokens;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 public final class JSANParser<KV extends JSANKeyValue> {
 
@@ -27,6 +28,14 @@ public final class JSANParser<KV extends JSANKeyValue> {
                 .filter( v -> v instanceof ParsedJSANGroup && ((ParsedJSANGroup)v).getGroupId()==groupId)
                 .findFirst()
                 .orElse(null);
+    }
+
+    public static String parseToJson(List<JSANKeyValue> values) {
+        return new JSANParser<>().parse(values, MappedParsedJSANNode.class).toJson();
+    }
+
+    public static Map<String, Object> parseToMap(List<JSANKeyValue> values) {
+        return new JSANParser<>().parse(values, MappedParsedJSANNode.class).getMap();
     }
 
     private void parseKeyValue(ParsedJSANNode node, JSANKeyValue kv) {

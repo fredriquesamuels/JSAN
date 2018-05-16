@@ -13,14 +13,14 @@ import static org.junit.Assert.assertNotNull;
 public class JSANParserTest {
 
     private JSANParser<JSANKeyValue> parser;
-    private JSANMapper converter;
+    private JSANMapper jsanMapper;
 
     @Mocked
     ParsedJSANNode parsedJSANNode;
 
     @Before
     public void setUp() throws Exception {
-        converter = new JSANMapper(new DefaultJSANKeyValueFactory());
+        jsanMapper = new JSANMapper();
         parser = new JSANParser();
     }
 
@@ -28,7 +28,7 @@ public class JSANParserTest {
     public void parser() {
         //given
         JSANNode node = JSANNode.fromJSON(JSANTestUtils.PRIMITIVES_JSON);
-        List<JSANKeyValue> keyValues = converter.toKeyValues(node);
+        List<JSANKeyValue> keyValues = jsanMapper.toKeyValues(node);
 
         //when
         MappedParsedJSANNode parsedJSANNode = parser.parse(keyValues, MappedParsedJSANNode.class);
@@ -48,7 +48,7 @@ public class JSANParserTest {
     public void parserList() {
         //given
         JSANNode node = JSANNode.fromJSON(JSANTestUtils.LIST_JSON);
-        List<JSANKeyValue> keyValues = converter.toKeyValues(node);
+        List<JSANKeyValue> keyValues = jsanMapper.toKeyValues(node);
 
         //when
         MappedParsedJSANNode parsedJSANNode = parser.parse(keyValues, MappedParsedJSANNode.class);
@@ -67,7 +67,7 @@ public class JSANParserTest {
     public void parserSpecialChars() {
         //given
         JSANNode node = JSANNode.fromJSON(JSANTestUtils.SPECIAL_CHARS_JSON);
-        List<JSANKeyValue> keyValues = converter.toKeyValues(node);
+        List<JSANKeyValue> keyValues = jsanMapper.toKeyValues(node);
 
         //when
         MappedParsedJSANNode parsedJSANNode = parser.parse(keyValues, MappedParsedJSANNode.class);
@@ -84,7 +84,7 @@ public class JSANParserTest {
     public void multiProps() {
         //given
         JSANNode node = JSANNode.fromJSON(JSANTestUtils.MULTI_PROPS_JSON);
-        List<JSANKeyValue> keyValues = converter.toKeyValues(node);
+        List<JSANKeyValue> keyValues = jsanMapper.toKeyValues(node);
 
         //when
         MappedParsedJSANNode parsedJSANNode = parser.parse(keyValues, MappedParsedJSANNode.class);

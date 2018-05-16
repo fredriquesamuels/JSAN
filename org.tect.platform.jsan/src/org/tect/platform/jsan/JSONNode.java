@@ -25,7 +25,7 @@ class JSONNode extends JSANNode {
         return map.entrySet().stream().map(es -> convertToAttribute(es.getKey(), es.getValue())).collect(Collectors.toList());
     }
 
-    private Map<String, Object> parseToMap(String jsonString) {
+    static Map<String, Object> parseToMap(String jsonString) {
         try {
             ObjectMapper var1 = new ObjectMapper();
             return (Map) var1.readValue(jsonString, new TypeReference<Map<String, Object>>() {
