@@ -2,7 +2,7 @@ package org.tect.platform.jsan;
 
 public abstract class JSANNode<AT extends JSANAttribute> extends JSANObject<AT> {
 
-    JSANNode() {
+    public JSANNode() {
         super(-1);
     }
 
